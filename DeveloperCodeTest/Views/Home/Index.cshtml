@@ -2,30 +2,125 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@using System.Diagnostics
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@{
+    int number = 24;
+
+    bool done = false;
+    int rightDownStepSize = 1;
+    int leftUpStepSize = 2;
+
+    int x = 2;
+    int y = 2;
+    int currentNumber = 0;
+
+    int[,] arr = new int[5, 5];
+
+
+    //Target:
+    //       0  1  2  3  4
+    //          
+    //  0   20 21 22 23 24
+    //  1   19  6  7  8  9
+    //  2   18  5  0  1 10
+    //  3   17  4  3  2 11
+    //  4   16 15 14 13 12
+
+
+    //for (int i = 0; i < number; i++)
+    //{
+
+    //}
+
+
+
+
+    while (!done)
+    {
+        //Go Right
+        for (int i = 0; i < rightDownStepSize; i++)
+        {
+
+
+            Debug.WriteLine($"x: {x}  y: {y}  val:{currentNumber}");
+
+            arr[x, y] = currentNumber;
+            if (currentNumber == number) { done = true; break; }
+            currentNumber++;
+
+            x++;
+
+        }
+
+
+        //Go Down
+        for (int i = 0; i < rightDownStepSize; i++)
+        {
+
+
+            Debug.WriteLine($"x: {x}  y: {y}  val:{currentNumber}");
+            arr[x, y] = currentNumber;
+            if (currentNumber == number) { done = true; break; }
+            currentNumber++;
+            y++;
+        }
+
+
+        //Go Left
+        for (int i = 0; i < leftUpStepSize; i++)
+        {
+
+
+            Debug.WriteLine($"x: {x}  y: {y}  val:{currentNumber}");
+            arr[x, y] = currentNumber;
+            if (currentNumber == number) { done = true; break; }
+            currentNumber++;
+            x--;
+        }
+
+
+
+        //Go Up
+        for (int i = 0; i < leftUpStepSize; i++)
+        {
+
+
+            Debug.WriteLine($"x: {x}  y: {y}  val:{currentNumber}");
+            arr[x, y] = currentNumber;
+            if (currentNumber == number) { done = true; break; }
+            currentNumber++;
+            y--;
+        }
+
+        rightDownStepSize += 2;
+
+        //if (rightDownStepSize == 1)
+        //{
+        //    rightDownStepSize += 2;
+        //}
+        //else
+        //{
+        //    rightDownStepSize++;
+        //}
+
+        leftUpStepSize+=2;
+
+    }
+
+<table class="table">
+    @{
+        for (int i = 0; i < 5; i++)
+        {
+            <tr>
+
+                @for (int j = 0; j < 5; j++)
+                {
+                    <td>@arr[j, i]  (@i, @j)</td>
+                }
+            </tr>
+        }
+    }
+</table>
+
+}
