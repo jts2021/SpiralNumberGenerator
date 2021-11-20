@@ -10,52 +10,53 @@
 @{
     <br />
     <br />
-    using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    using (Html.BeginForm("Index", "Home", FormMethod.Post, new { Class = "row g-3" }))
     {
-        <div>
-            @Html.TextBox("InputNumber")
+        <div class="col-auto">
+            <label for="InputNumber" class="form-label">Maximum number in spiral:</label>
+            <input type="number" class="form-control" id="InputNumber" placeholder="Input a number">
+        </div>
 
-            <input class="btn" type="submit" value="Submit" />
+        <div class="col-auto">
+            <input class="btn btn-primary" type="submit" value="Generate Spiral" />
         </div>
     }
+            <br />
+            <br />
 
+            <table class="table table-bordered">
+                @{
+                    if (Model != null)
+                    {
 
-    <br />
-    <br />
+                        int arraySize = Model.GetLength(0);
 
-    <table class="table table-bordered">
-        @{
-            if (Model != null)
-            {
-
-                int arraySize = Model.GetLength(0);
-
-                for (int i = 0; i < arraySize; i++)
-                {
-                    <tr>
-
-                        @for (int j = 0; j < arraySize; j++)
+                        for (int i = 0; i < arraySize; i++)
                         {
-                            if (Model[j, i] != null)
-                            {
-                                if (Model[j, i] == 0)
-                                {
-                                    <td class="table-success">@Model[j, i]</td>
-                                }
-                                else
-                                {
-                                    <td>@Model[j, i]</td>
-                                }
-                            }
-                            else
-                            {
-                                <td></td>
-                            }
-                        }
-                    </tr>
-                }
-            }
-        }
-    </table>
+                            <tr>
 
-}
+                                @for (int j = 0; j < arraySize; j++)
+                                {
+                                    if (Model[j, i] != null)
+                                    {
+                                        if (Model[j, i] == 0)
+                                        {
+                                            <td class="table-success">@Model[j, i]</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Model[j, i]</td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+
+            }
