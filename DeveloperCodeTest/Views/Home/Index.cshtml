@@ -1,4 +1,6 @@
-﻿@{
+﻿@model int?[,]
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,29 +8,54 @@
 @using BusinessLogic
 
 @{
+    <br />
+    <br />
+    using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <div>
+            @Html.TextBox("InputNumber")
 
-
-    SpiralGenerator sg = new SpiralGenerator();
-
-    int[,] arr = sg.Generate(25);
-
-    
-
-<table class="table">
-    @{
-        int arraySize = arr.GetLength(0);
-
-        for (int i = 0; i < arraySize; i++)
-        {
-            <tr>
-
-                @for (int j = 0; j < arraySize; j++)
-                {
-                    <td>@arr[j, i]</td>
-                }
-            </tr>
-        }
+            <input class="btn" type="submit" value="Submit" />
+        </div>
     }
-</table>
+
+
+    <br />
+    <br />
+
+    <table class="table table-bordered">
+        @{
+            if (Model != null)
+            {
+
+                int arraySize = Model.GetLength(0);
+
+                for (int i = 0; i < arraySize; i++)
+                {
+                    <tr>
+
+                        @for (int j = 0; j < arraySize; j++)
+                        {
+                            if (Model[j, i] != null)
+                            {
+                                if (Model[j, i] == 0)
+                                {
+                                    <td class="table-success">@Model[j, i]</td>
+                                }
+                                else
+                                {
+                                    <td>@Model[j, i]</td>
+                                }
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        }
+    </table>
 
 }

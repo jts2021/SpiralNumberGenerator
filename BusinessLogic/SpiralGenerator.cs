@@ -70,7 +70,7 @@ namespace BusinessLogic
             return (gridSize / 2);
         }
 
-        public int[,] Generate(int number)
+        public int?[,] Generate(int number)
         {
             int gridSize = CalculateGridSize(number);
             int centerPoint = CalculateCenterPoint(gridSize);
@@ -84,7 +84,7 @@ namespace BusinessLogic
             int y = centerPoint;
             
 
-            int[,] arr = new int[gridSize, gridSize];
+            int?[,] arr = new int?[gridSize, gridSize];
 
 
             //Target:
