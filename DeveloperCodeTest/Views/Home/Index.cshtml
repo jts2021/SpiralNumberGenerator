@@ -12,13 +12,12 @@
     <br />
     using (Html.BeginForm("Index", "Home", FormMethod.Post, new { Class = "row g-3" }))
     {
-        <div class="col-auto">
-            <label for="InputNumber" class="form-label">Maximum number in spiral:</label>
-            <input type="number" class="form-control" id="InputNumber" placeholder="Input a number">
+        <div class="col-auto">            
+            <input type="number" class="form-control" name="InputNumber" max="100000" min="0" id="InputNumber" placeholder="Input a number" required>
         </div>
 
         <div class="col-auto">
-            <input class="btn btn-primary" type="submit" value="Generate Spiral" />
+            <input class="btn btn-primary" type="submit"  value="Generate Spiral" />
         </div>
     }
             <br />
@@ -50,7 +49,7 @@
                                     }
                                     else
                                     {
-                                        <td></td>
+                                        <td>&nbsp;</td>
                                     }
                                 }
                             </tr>

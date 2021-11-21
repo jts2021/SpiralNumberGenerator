@@ -54,7 +54,14 @@ namespace BusinessLogic
 
             if (IsNumberInteger(squareRoot))
             {
-                result = (int)squareRoot;
+                if (IsDivisibleBy2((int)squareRoot))
+                {
+                    result = GetNextOddNumber((int)squareRoot);
+                }
+                else
+                {
+                    result = (int)squareRoot;
+                }
             }
             else
             {
@@ -72,6 +79,8 @@ namespace BusinessLogic
 
         public int?[,] Generate(int number)
         {
+            number = Math.Abs(number);
+
             int gridSize = CalculateGridSize(number);
             int centerPoint = CalculateCenterPoint(gridSize);
 
@@ -105,11 +114,8 @@ namespace BusinessLogic
                     arr[x, y] = currentNumber;
                     if (currentNumber == number) { done = true; break; }
                     currentNumber++;
-
                     x++;
-
                 }
-
 
                 //Go Down
                 for (int i = 0; i < rightDownStepSize; i++)
@@ -120,7 +126,6 @@ namespace BusinessLogic
                     y++;
                 }
 
-
                 //Go Left
                 for (int i = 0; i < leftUpStepSize; i++)
                 {
@@ -129,8 +134,6 @@ namespace BusinessLogic
                     currentNumber++;
                     x--;
                 }
-
-
 
                 //Go Up
                 for (int i = 0; i < leftUpStepSize; i++)
