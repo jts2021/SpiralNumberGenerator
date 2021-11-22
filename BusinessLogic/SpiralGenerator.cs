@@ -4,18 +4,19 @@ namespace BusinessLogic
 {
     public class SpiralGenerator
     {
-        public bool IsNumberInteger(double number)
+        #region Private functions
+        private bool IsNumberInteger(double number)
         {
             // If the remainder is 0 dividing by 1 then the number is an integer.
             return (number % 1 == 0);
         }
 
-        public bool IsDivisibleBy2(int number)
+        private bool IsDivisibleBy2(int number)
         {            
             return (number % 2 == 0);
         }
 
-        public int GetNextOddNumber(int number)
+        private int GetNextOddNumber(int number)
         {
             int result = number;
 
@@ -30,7 +31,7 @@ namespace BusinessLogic
             return result;
         }
 
-        public int CalculateGridSize(int inputNumber)
+        private int CalculateGridSize(int inputNumber)
         {
             //NOTE:  The grid needs to be square.
             //       It also needs to have an odd number of elements in each dimmension so the 0 element will always be at the center.
@@ -67,11 +68,12 @@ namespace BusinessLogic
             return result;
         }
 
-        public int CalculateCenterPoint(int gridSize)
+        private int CalculateCenterPoint(int gridSize)
         {
             // Since the grid dimensions are always odd then dividing by 2 will get the center point.
             return (gridSize / 2);
         }
+        #endregion Private functions
 
         public int?[,] Generate(int number)
         {
