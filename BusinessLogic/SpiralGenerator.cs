@@ -1,23 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
     public class SpiralGenerator
     {
-        //private bool HandleElement()
-        //{
-        //    bool done = false;
-        //    arr[x, y] = currentNumber;
-        //    if (currentNumber == number) { done = true; break; }
-        //    currentNumber++;
-
-        //    return done;
-        //}
-
         public bool IsNumberInteger(double number)
         {
             return (number % 1 == 0);
@@ -42,7 +28,6 @@ namespace BusinessLogic
             }
             return result;
         }
-
 
         public int CalculateGridSize(int inputNumber)
         {
@@ -90,21 +75,9 @@ namespace BusinessLogic
             int leftUpStepSize = 2;
 
             int x = centerPoint;
-            int y = centerPoint;
-            
+            int y = centerPoint;            
 
             int?[,] arr = new int?[gridSize, gridSize];
-
-
-            //Target:
-            //       0  1  2  3  4
-            //          
-            //  0   20 21 22 23 24
-            //  1   19  6  7  8  9
-            //  2   18  5  0  1 10
-            //  3   17  4  3  2 11
-            //  4   16 15 14 13 12
-
 
             while (!done)
             {

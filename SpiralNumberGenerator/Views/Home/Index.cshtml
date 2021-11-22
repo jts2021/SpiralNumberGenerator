@@ -1,14 +1,10 @@
 ﻿@model int?[,]
 
-@{
-    ViewBag.Title = "Home Page";
-}
-
 @using System.Diagnostics
 @using BusinessLogic
 
 @{
-    <br />
+
     <br />
     using (Html.BeginForm("Index", "Home", FormMethod.Post, new { Class = "row g-3" }))
     {
@@ -20,44 +16,44 @@
             <input class="btn btn-primary" type="submit"  value="Generate Spiral" />
         </div>
     }
-            <br />
-            <br />
+    <br />
+    <br />
 
-            <table class="table table-bordered">
-                @{
-                    if (Model != null)
-                    {
+    <table class="table table-bordered">
+        @{
+            if (Model != null)
+            {
 
-                        int arraySize = Model.GetLength(0);
+                int arraySize = Model.GetLength(0);
 
-                        for (int y = 0; y < arraySize; y++)
+                for (int y = 0; y < arraySize; y++)
+                {
+                    <tr>
+
+                        @for (int x = 0; x < arraySize; x++)
                         {
-                            <tr>
+                            int? value = Model[x, y];
 
-                                @for (int x = 0; x < arraySize; x++)
+                            if (value != null)
+                            {
+                                if (value == 0)
                                 {
-                                    int? value = Model[x, y];
-
-                                    if (value != null)
-                                    {
-                                        if (value == 0)
-                                        {
-                                            <td class="table-success">@value</td>
-                                        }
-                                        else
-                                        {
-                                            <td>@value</td>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <td>&nbsp;</td>
-                                    }
+                                    <td class="table-success">@value</td>
                                 }
-                            </tr>
+                                else
+                                {
+                                    <td>@value</td>
+                                }
+                            }
+                            else
+                            {
+                                <td>&nbsp;</td>
+                            }
                         }
-                    }
+                    </tr>
                 }
-            </table>
-
             }
+        }
+    </table>
+
+    }
