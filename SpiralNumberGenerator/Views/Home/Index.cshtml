@@ -4,12 +4,13 @@
 @using BusinessLogic
 
 @{
-
-    <br />
+    <h2>Spiral Number Generator</h2>
+    
     using (Html.BeginForm("Index", "Home", FormMethod.Post, new { Class = "row g-3" }))
     {
-        <div class="col-5">            
-            <input type="number" class="form-control" name="InputNumber" max="100000" min="0" id="InputNumber" placeholder="Input a number" required>
+        
+        <div class="col-3">            
+            <input type="number" class="form-control" name="InputNumber" max="100000" min="0" id="InputNumber" placeholder="Input a integer" required>
         </div>
 
         <div class="col-auto">
@@ -17,7 +18,7 @@
         </div>
     }
     <br />
-    <br />
+    
 
     <table class="table table-bordered">
         @{
@@ -38,6 +39,7 @@
                             {
                                 if (value == 0)
                                 {
+                                    //Mark the center point
                                     <td class="table-success">@value</td>
                                 }
                                 else
