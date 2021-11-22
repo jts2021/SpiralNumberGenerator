@@ -12,7 +12,7 @@
     <br />
     using (Html.BeginForm("Index", "Home", FormMethod.Post, new { Class = "row g-3" }))
     {
-        <div class="col-auto">            
+        <div class="col-5">            
             <input type="number" class="form-control" name="InputNumber" max="100000" min="0" id="InputNumber" placeholder="Input a number" required>
         </div>
 
@@ -30,21 +30,23 @@
 
                         int arraySize = Model.GetLength(0);
 
-                        for (int i = 0; i < arraySize; i++)
+                        for (int y = 0; y < arraySize; y++)
                         {
                             <tr>
 
-                                @for (int j = 0; j < arraySize; j++)
+                                @for (int x = 0; x < arraySize; x++)
                                 {
-                                    if (Model[j, i] != null)
+                                    int? value = Model[x, y];
+
+                                    if (value != null)
                                     {
-                                        if (Model[j, i] == 0)
+                                        if (value == 0)
                                         {
-                                            <td class="table-success">@Model[j, i]</td>
+                                            <td class="table-success">@value</td>
                                         }
                                         else
                                         {
-                                            <td>@Model[j, i]</td>
+                                            <td>@value</td>
                                         }
                                     }
                                     else
